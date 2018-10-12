@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        .container {
+            padding-left: auto;
+            padding-right: auto;
+            width: 100%;
+            height: 100%;
+        }
+        #d9 {
+            margin-left: auto;
+            margin-right: auto;
+            width: 200px;
+            height: 200px;
+            background: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Ce contenu est écrit après session start et ob start, contenu dans une variable délivré par le layout</h3>
+<div>
+    <div style="height: 100%">
+        <h2>BALOON</h2>
+    </div>
+
+</div>
+<div class="container">
+    <button id="d9" type="button" onclick="plus10()" onmouseout="minus()" >CLICK</button>
+</div>
+
+<script>
+
+    let tab = ['red', 'green', 'blue'];
+    let i = 0;
+    let hov = false;
+    let id = document.getElementById('d9');
+
+    function minus() {
+        if (i == 0) {
+            i = 2;
+        } else {
+            i--;
+        }
+        let size = id.offsetWidth;
+        if (size > 200)
+        {
+            id.style.width = (size - 5) + "px";
+            id.style.height = (size - 5) + "px";
+        }
+        id.style.background = tab[i];
+    }
+    function css (elem, att) {
+        let style = window.getComputedStyle(elem);
+        return style.getPropertyValue(att);
+    }
+    function plus10(){
+        if (i == 2) {
+            i = 0;
+        } else {
+            i++;
+        }
+        let size = id.offsetWidth;
+        id.style.width = (size + 10) + "px";
+        id.style.height = (size + 10) + "px";
+        id.style.background = tab[i];
+        size = id.offsetWidth;
+        if (size > 420) {
+            id.style.width = 200 + "px";
+            id.style.height = 200 + "px";
+        }
+        console.log(id.offsetWidth);
+    }
+</script>
+
+</body>
+</html>
